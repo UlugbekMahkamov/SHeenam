@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sheenam.Api.Tests.Unit.Services.Foundations.Guests
 {
-    public class GuestServiceTests
+    public partial class GuestServiceTests
     {
     }
 }
