@@ -7,10 +7,11 @@ using Xeptions;
 
 namespace Sheenam.Api.Models.Foundations.Guests.Exceptions
 {
-    public class NullGuestException : Xeption
+    public class GuestDependencyValidationException : Xeption
     {
-        public NullGuestException()
-            : base(message: "Guest is null")
+        public GuestDependencyValidationException(Xeption innerException)
+            : base(message: "Guest dependency validation error occurred, fix the errors and try again",
+                  innerException)
         { }
     }
 }

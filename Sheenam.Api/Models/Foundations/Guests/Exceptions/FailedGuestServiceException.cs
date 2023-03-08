@@ -3,14 +3,16 @@
 // Free To Use To Find Comfort and Peace
 //=================================
 
+using System;
 using Xeptions;
 
 namespace Sheenam.Api.Models.Foundations.Guests.Exceptions
 {
-    public class NullGuestException : Xeption
+    public class FailedGuestServiceException : Xeption
     {
-        public NullGuestException()
-            : base(message: "Guest is null")
+        public FailedGuestServiceException(Exception innerException)
+            : base(message: "Failed guest service error occurred, contact support",
+                  innerException)
         { }
     }
 }

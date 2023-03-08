@@ -7,10 +7,11 @@ using Xeptions;
 
 namespace Sheenam.Api.Models.Foundations.Guests.Exceptions
 {
-    public class NullGuestException : Xeption
+    public class GuestDependencyException : Xeption
     {
-        public NullGuestException()
-            : base(message: "Guest is null")
+        public GuestDependencyException(Xeption innerException)
+            : base(message: "Guest dependency error occurred, contact support",
+                  innerException)
         { }
     }
 }
