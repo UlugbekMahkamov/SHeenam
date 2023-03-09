@@ -54,7 +54,7 @@ namespace Sheenam.Api.Services.Foundations.Guests
         private static dynamic IsInvalid(GenderType gender) => new
         {
             Condition = Enum.IsDefined(gender) is false,
-            Message = "Value is invalid"
+            Message = "Value is invalid."
         };
 
         private static void Validate(params (dynamic Rule, string Parameter)[] validations)
