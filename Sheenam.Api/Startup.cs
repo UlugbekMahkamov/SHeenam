@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Sheenam.Api.Brokers.Loggings;
 using Sheenam.Api.Brokers.Storages;
+using Sheenam.Api.Services.Foundations.Guests;
 
 namespace Sheenam.Api
 {
@@ -30,6 +31,8 @@ namespace Sheenam.Api
             services.AddControllers();
             services.AddDbContext<StorageBroker>();
             AddBrokers(services);
+            AddFoundationServices(services);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sheenam.Api", Version = "v1" });
@@ -42,8 +45,12 @@ namespace Sheenam.Api
             services.AddTransient<ILoggingBroker, LoggingBroker>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        private static void AddFoundationServices(IServiceCollection services)
+        {
+            services.AddTransient<IGuestService, GuestService>();
+        }
+            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
