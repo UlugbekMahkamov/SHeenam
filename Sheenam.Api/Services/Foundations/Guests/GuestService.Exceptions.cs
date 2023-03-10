@@ -53,10 +53,10 @@ namespace Sheenam.Api.Services.Foundations.Guests
             }
         }
 
-        private GuestValidationException CreateAndLogValidationException(Xeption exception)
+        private GuestValidationDependencyException CreateAndLogValidationException(Xeption exception)
         {
             var guestValidationException =
-                   new GuestValidationException(exception);
+                   new GuestValidationDependencyException(exception);
 
             this.loggingBroker.LogError(guestValidationException);
 
