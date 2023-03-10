@@ -21,14 +21,14 @@ namespace Sheenam.Api.Tests.Unit.Services.Foundations.Guests
             var nullGuestException = new NullGuestException();
 
             var expectedGuestValidtionException =
-                new GuestValidationException(nullGuestException);
+                new GuestValidationDependencyException(nullGuestException);
 
             // when
             ValueTask<Guest> addGuestTask =
                 this.guestService.AddGuestAsync(nullGuest);
 
             // then
-            await Assert.ThrowsAsync<GuestValidationException>(() =>
+            await Assert.ThrowsAsync<GuestValidationDependencyException>(() =>
                 addGuestTask.AsTask());
 
             this.loggingBrokerMock.Verify(broker =>
@@ -83,14 +83,14 @@ namespace Sheenam.Api.Tests.Unit.Services.Foundations.Guests
                 values: "Text is required");
 
             var expectedGuestValidationException =
-                new GuestValidationException(invalidGuestException);
+                new GuestValidationDependencyException(invalidGuestException);
 
             // when
             ValueTask<Guest> addGuestTask =
                 this.guestService.AddGuestAsync(invalidGuest);
 
             // then
-            await Assert.ThrowsAsync<GuestValidationException>(() =>
+            await Assert.ThrowsAsync<GuestValidationDependencyException>(() =>
                addGuestTask.AsTask());
 
             this.loggingBrokerMock.Verify(broker =>
@@ -120,14 +120,14 @@ namespace Sheenam.Api.Tests.Unit.Services.Foundations.Guests
                 values: "Value is invalid");
 
             var expectedGuestValidationException =
-                new GuestValidationException(invalidGuestException);
+                new GuestValidationDependencyException(invalidGuestException);
 
             // when
             ValueTask<Guest> addGuestTask =
                 this.guestService.AddGuestAsync(invalidGuest);
 
             // then
-            await Assert.ThrowsAsync<GuestValidationException>(() =>
+            await Assert.ThrowsAsync<GuestValidationDependencyException>(() =>
                addGuestTask.AsTask());
 
             this.loggingBrokerMock.Verify(broker =>
